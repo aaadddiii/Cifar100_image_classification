@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  
+  dev:
+    image: objectdetection:latest
+    hostname: objectdetection-dev
+    env_file: ops/env.sh
+    volumes:
+      - .:/app
+    build:
+      context: .
+      dockerfile: ops/Dockerfile
+  
+
+  web:
+    image: objectdetection:latest
+    hostname: objectdetection-web
+    env_file: ops/env.sh
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
